@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Area Converter</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Marla to Square Feet and Square Feet to Marla Converter</h1>
+        <label for="value">Enter Value:</label>
+        <input type="number" id="value" step="0.01" placeholder="Enter a value" />
+        <label for="conversion-type">Select Conversion:</label>
+        <select id="conversion-type">
+            <option value="marlaToSqft">Marla to Square Feet</option>
+            <option value="sqftToMarla">Square Feet to Marla</option>
+        </select>
+        <button onclick="convert()">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convert() {
+            const value = parseFloat(document.getElementById("value").value);
+            const conversionType = document.getElementById("conversion-type").value;
+            let result = 0;
+
+            if (conversionType === "marlaToSqft") {
+                // 1 Marla = 272 square feet
+                result = value * 272;
+            } else {
+                // 1 square foot = 0.00444444 Marla (rounded to 6 decimal places)
+                result = value * 0.00444444;
+            }
+
+            document.getElementById("result").textContent = `Result: ${result} ${conversionType === "marlaToSqft" ? "Square Feet" : "Marla"}`;
+        }
+    </script>
+</body>
+</html>
